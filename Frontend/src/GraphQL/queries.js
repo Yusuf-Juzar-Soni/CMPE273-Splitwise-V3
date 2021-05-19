@@ -1,64 +1,53 @@
 import { gql } from "@apollo/client";
 
-const dashboardQuery = gql`
-  query getdashboarddetails($email: String) {
+const allUsersQuery = gql`
+  query allUser($email: String) {
     getdashboarddetails(email: $email) {
-      user_1
-      user_2
-      final_amount
-      group_name
+      user_email
+      username
     }
   }
 `;
 
-const profileQuery = gql`
-  query getprofile($email: String) {
-    getprofile(email: $email) {
-      email
-      fullname
-      language
-      currency
-      phonenumber
-      timezone
-      photopath
+const userDetailsQuery = gql`
+  query userDetails($user_email: String) {
+    getprofile(user_email: $user_email) {
+      user_email
+      username
     }
   }
 `;
 
-// # query{
-//     #   userDetails(user_email:"abc@gmail.com"){
-//     #     username
-//     #     user_email
-//     #   }
-//     # }
+const fetchBillsQuery = gql`
+  query fetchBills($group: String) {
+    fetchBills(group: $group) {
+      created_by
+      bill_amount
+      bill_group
+    }
+  }
+`;
 
-//     # query{
-//     #   allUsers(email:"abc@gmail.com"){
-//     #     username
-//     #     user_email
-//     #   }
-//     # }
+const ActivityQuery = gql`
+  query Activity($email: String) {
+    Activity(email: $email) {
+      created_by
+      bill_amount
+    }
+  }
+`;
+const getInvitesQuery = gql`
+  query getInvites($email: String) {
+    getInvites(email: $email) {
+      group_list
+    }
+  }
+`;
 
-//     # query{
-//     #   fetchBills(group:"APT 309"){
-//     #     created_by
-//     #     bill_amount
-
-//     #   }
-//     # }
-//     # query{
-//     #   Activity(email:"mg@gmail.com"){
-//     #     created_by
-//     #     bill_amount
-
-//     #   }
-//     # }
-//     # query{
-//     #   getInvites(email:"mg@gmail.com"){
-
-//     #     group_list
-
-//     #   }
-//     # }
-
-export { dashboardQuery, profileQuery };
+export {
+  allUsersQuery,
+  userDetailsQuery,
+  fetchBillsQuery,
+  ActivityQuery,
+  getInvitesQuery,
+};

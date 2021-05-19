@@ -41,27 +41,22 @@ const AddBillQuery = gql`
 `;
 
 const createGroupQuery = gql`
-  mutation Signup($username: String, $user_email: String, $password: String) {
-    Signup(email: $email, password: $password, fullname: $fullname) {
+  mutation createGroup(
+    $user: String
+    $groupName:String
+    $members:List
+  ) {
+    createGroup(user: $user, groupName: $groupName, members: $members) {
       message
     }
   }
 `;
 
 const acceptInvitesQuery = gql`
-  mutation Signup(
-    $user: String
-    $billData: String
-    $amount: Int
-    $group: String
-    $members: List
-  ) {
-    Signup(
+  mutation acceptInvites($user: String, $selectedgroup: String) {
+    acceptInvites(
       user: $user
-      billData: $billData
-      amount: $amount
-      group: $group
-      members: $members
+      selectedgroup: $selectedgroup
     ) {
       message
     }
@@ -69,8 +64,8 @@ const acceptInvitesQuery = gql`
 `;
 
 const leaveGroupQuery = gql`
-  mutation Signup($user: String, $group: String) {
-    Signup(user: $user, group: $group) {
+  mutation leaveGroup($user: String, $group: String) {
+    leaveGroup(user: $user, group: $group) {
       message
     }
   }
