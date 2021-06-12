@@ -38,21 +38,23 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const con = mysql.createPool({
-  connectionLimit: 10,
-  host: "graphql-splitwise-database.ca0vnrrcatej.us-east-2.rds.amazonaws.com",
-  user: "admin",
-  password: "test1234",
-  ssl: true,
-  database: "splitwise_db",
-});
-
-// const con = mysql.createConnection({
-//   host: "graphql-splitwise-database.ca0vnrrcatej.us-east-2.rds.amazonaws.com", // ip address of server running mysql
-//   user: "admin", //user name to your my sql server
-//   password: "test1234",
+// uncomment for connection pooling 
+// const con = mysql.createPool({
+//   connectionLimit: 10,
+//   host: "",
+//   user: "",
+//   password: "",
+//   ssl: true,
 //   database: "splitwise_db",
 // });
+
+const con = mysql.createConnection({
+  host: "", // ip address of server running mysql amazon RDS
+  user: "", //user name to your my sql server
+  password: "", //password of Amazon RDS
+  database: "splitwise_db", // Name of DB 
+});
+
 
 // con.connect((err) => {
 //   if (err) {

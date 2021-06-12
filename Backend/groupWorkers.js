@@ -1,9 +1,9 @@
 const mysql = require("mysql");
 const con = mysql.createConnection({
-  host: "graphql-splitwise-database.ca0vnrrcatej.us-east-2.rds.amazonaws.com", // ip address of server running mysql
-  user: "admin", //user name to your my sql server
-  password: "test1234",
-  database: "splitwise_db",
+  host: "", // ip address of server running mysql amazon RDS
+  user: "", //user name to your my sql server
+  password: "", //password of Amazon RDS
+  database: "splitwise_db", // Name of DB 
 });
 
 let createUserGroup = (member, groupName, status) => {
